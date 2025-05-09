@@ -16,8 +16,11 @@ app.post('/ask', async (req, res) => {
       'https://api.openai.com/v1/chat/completions',
       {
         model: 'gpt-4o',
-        messages: [{ role: 'user', content: `Która odpowiedź (A, B, C, D) jest poprawna? ${question}` }],
-        temperature: 0.3
+        messages: [{
+          role: 'user',
+          content: `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź. Odpowiedz tylko literą odpowiedzi (np. A, B, C lub D). Jeśli odpowiedzi jest więcej lub mniej, dostosuj się do liczby opcji. Treść pytania i odpowiedzi:\n\n${question}`
+        }],
+        temperature: 0.3 // 🔧 ← ten przecinek był brakujący
       },
       {
         headers: {
