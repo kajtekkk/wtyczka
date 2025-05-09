@@ -12,15 +12,19 @@ app.post('/ask', async (req, res) => {
   const { question } = req.body;
 
   try {
+    const prompt = `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź.
+Odpowiedz tylko literą spośród: A, B, C lub D.
+Treść pytania i odpowiedzi:\n\n${question}`;
+
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
         model: 'gpt-4o',
         messages: [{
           role: 'user',
-          content: `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź. Odpowiedz tylko literą odpowiedzi (np. A, B, C lub D). Jeśli odpowiedzi jest więcej lub mniej, dostosuj się do liczby opcji. Treść pytania i odpowiedzi:\n\n${question}`
+          content: prompt
         }],
-        temperature: 0.3 // 🔧 ← ten przecinek był brakujący
+        temperature: 0.3
       },
       {
         headers: {
