@@ -1,7 +1,9 @@
 {
   "name": "gpt-api-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "type": "module",
   "dependencies": {
     "axios": "^1.6.7",
