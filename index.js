@@ -18,7 +18,7 @@ app.post('/ask', async (req, res) => {
         model: 'gpt-4o',
         messages: [{
           role: 'user',
-          content: `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź (Pytanie może być wielokrotnego wyboru, więc czasem będziesz jednak musiał podać kilka poprawnych odpowiedzi). Zwróć najpierw literę odpowiedzi, a następnie jej treść. Przykład: "B - To jest poprawna odpowiedź". Treść pytania i odpowiedzi:\n\n${question}`
+          content: `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź. Zwróć najpierw literę odpowiedzi, a następnie jej treść. Przykład: "B - To jest poprawna odpowiedź". Treść pytania i odpowiedzi:\n\n${question}`
         }],
         temperature: 0.3
       },
