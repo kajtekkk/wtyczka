@@ -12,17 +12,13 @@ app.post('/ask', async (req, res) => {
   const { question } = req.body;
 
   try {
-    const prompt = `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź.
-Odpowiedz tylko literą spośród: A, B, C lub D.
-Treść pytania i odpowiedzi:\n\n${question}`;
-
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
         model: 'gpt-4o',
         messages: [{
           role: 'user',
-          content: prompt
+          content: `Na podstawie poniższego pytania i podanych opcji wybierz najbardziej trafną odpowiedź. Zwróć najpierw literę odpowiedzi, a następnie jej treść. Przykład: "B - To jest poprawna odpowiedź". Treść pytania i odpowiedzi:\n\n${question}`
         }],
         temperature: 0.3
       },
